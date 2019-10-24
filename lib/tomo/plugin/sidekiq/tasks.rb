@@ -1,6 +1,6 @@
-module Tomo::Plugin::Example
+module Tomo::Plugin::Sidekiq
   class Tasks < Tomo::TaskLibrary
-    # Defines a example:hello task
+    # Defines a sidekiq:hello task
     def hello
       remote.run "echo", "hello, world"
     end

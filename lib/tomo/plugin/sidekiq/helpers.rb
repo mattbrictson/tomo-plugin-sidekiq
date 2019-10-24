@@ -1,4 +1,4 @@
-module Tomo::Plugin::Example
+module Tomo::Plugin::Sidekiq
   module Helpers
     # Defines a remote.shout helper
     def shout(*message, **run_opts)

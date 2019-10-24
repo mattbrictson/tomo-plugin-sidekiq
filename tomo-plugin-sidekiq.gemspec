@@ -1,22 +1,22 @@
 lib = File.expand_path("lib", __dir__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require "tomo/plugin/example/version"
+require "tomo/plugin/sidekiq/version"
 
 Gem::Specification.new do |spec|
-  spec.name          = "example"
-  spec.version       = Tomo::Plugin::Example::VERSION
-  spec.authors       = ["Example Owner"]
-  spec.email         = ["owner@example.com"]
+  spec.name          = "tomo-plugin-sidekiq"
+  spec.version       = Tomo::Plugin::Sidekiq::VERSION
+  spec.authors       = ["Matt Brictson"]
+  spec.email         = ["opensource@mattbrictson.com"]
 
-  spec.summary       = ""
-  spec.homepage      = "https://github.com/mattbrictson/tomo-plugin"
+  spec.summary       = "sidekiq tasks for tomo"
+  spec.homepage      = "https://github.com/mattbrictson/tomo-plugin-sidekiq"
   spec.license       = "MIT"
 
   spec.metadata = {
-    "bug_tracker_uri" => "https://github.com/mattbrictson/tomo-plugin/issues",
-    "changelog_uri" => "https://github.com/mattbrictson/tomo-plugin/releases",
-    "source_code_uri" => "https://github.com/mattbrictson/tomo-plugin",
-    "homepage_uri" => "https://github.com/mattbrictson/tomo-plugin"
+    "bug_tracker_uri" => "https://github.com/mattbrictson/tomo-plugin-sidekiq/issues",
+    "changelog_uri" => "https://github.com/mattbrictson/tomo-plugin-sidekiq/releases",
+    "source_code_uri" => "https://github.com/mattbrictson/tomo-plugin-sidekiq",
+    "homepage_uri" => "https://github.com/mattbrictson/tomo-plugin-sidekiq"
   }
 
   # Specify which files should be added to the gem when it is released.

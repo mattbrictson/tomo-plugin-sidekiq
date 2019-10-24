@@ -1,8 +1,8 @@
 require "test_helper"
 
-class Tomo::Plugin::Example::HelpersTest < Minitest::Test
+class Tomo::Plugin::Sidekiq::HelpersTest < Minitest::Test
   def setup
-    @tester = Tomo::Testing::MockPluginTester.new("example")
+    @tester = Tomo::Testing::MockPluginTester.new("sidekiq")
   end
 
   def test_shout

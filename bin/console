@@ -2,7 +2,7 @@
 
 gem "bundler", "~> 2.0"
 require "bundler/setup"
-require "tomo/plugin/example"
+require "tomo/plugin/sidekiq"
 
 # You can add fixtures and/or initialization code here to make experimenting
 # with your gem easier. You can also use a different console, if you like.

@@ -15,7 +15,7 @@ task bump: %w[bump:bundler bump:ruby bump:year]
 
 Rake::Task["release"].enhance do
   puts "Don't forget to publish the release on GitHub!"
-  system "open https://github.com/mattbrictson/tomo-plugin/releases"
+  system "open https://github.com/mattbrictson/tomo-plugin-sidekiq/releases"
 end
 
 namespace :bump do
@@ -30,7 +30,7 @@ namespace :bump do
     lowest_minor = RubyVersions.lowest_supported_minor
     latest = RubyVersions.latest
 
-    replace_in_file "example.gemspec",
+    replace_in_file "tomo-plugin-sidekiq.gemspec",
                     /ruby_version = ">= (.*)"/ => lowest
 
     replace_in_file ".rubocop.yml", /TargetRubyVersion: (.*)/ => lowest_minor
