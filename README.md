@@ -5,7 +5,7 @@
 [![Circle](https://circleci.com/gh/mattbrictson/tomo-plugin-sidekiq.svg?style=shield)](https://circleci.com/gh/mattbrictson/tomo-plugin-sidekiq)
 [![Code Climate](https://codeclimate.com/github/mattbrictson/tomo-plugin-sidekiq/badges/gpa.svg)](https://codeclimate.com/github/mattbrictson/tomo-plugin-sidekiq)
 
-This is a [tomo](https://github.com/mattbrictson/tomo) plugin that ... TODO: Description of this plugin goes here.
+This is a [tomo](https://github.com/mattbrictson/tomo) plugin that provides tasks for managing [sidekiq](https://github.com/mperham/sidekiq) via [systemd](https://en.wikipedia.org/wiki/Systemd), based on the recommendations in the sidekiq documentation. This plugin assumes that you are also using `rbenv` and `env`, and that you are using a systemd-based Linux distribution like Ubuntu 18 LTS.
 
 ---
 
@@ -35,15 +35,35 @@ Then add the following to `.tomo/config.rb`:
 
 ```ruby
 plugin "sidekiq"
+
+setup do
+  # ...
+  run "sidekiq:setup_systemd"
+end
+
+deploy do
+  # ...
+  # Place this task at *after* core:symlink_current
+  run "sidekiq:restart"
+end
+```
+
+### enable-linger
+
+This plugin installs sidekiq as a user-level service using systemctl --user. This allows sidekiq to be installed, started, stopped, and restarted without a root user or sudo. However, when provisioning the host you must make sure to run the following command as root to allow the sidekiq process to continue running even after the tomo deploy user disconnects:
+
+```
+# run as root
+$ loginctl enable-linger <DEPLOY_USER>
 ```
 
 ## Settings
 
-TODO: document plugin settings
-
-| Name                  | Purpose | Default |
-| --------------------- | ------- | ------- |
-| `sidekiq_setting` | TODO    | `nil`   |
+| Name                  | Purpose |
+| --------------------- | ------- |
+| `sidekiq_systemd_service` | Name of the systemd unit that will be used to manage sidekiq <br>**Default:** `"sidekiq_%{application}.service"`   |
+| `sidekiq_systemd_service_path` | Location where the systemd unit will be installed <br>**Default:** `".config/systemd/user/%{sidekiq_systemd_service}"`   |
+| `sidekiq_systemd_service_template_path` | Local path to the ERB template that will be used to create the systemd unit <br>**Default:** [service.erb](https://github.com/mattbrictson/tomo-plugin-sidekiq/blob/master/lib/tomo/plugin/sidekiq/service.erb)   |
 
 ## Tasks
 
