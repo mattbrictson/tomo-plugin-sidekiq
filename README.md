@@ -5,7 +5,7 @@
 [![Circle](https://circleci.com/gh/mattbrictson/tomo-plugin-sidekiq.svg?style=shield)](https://circleci.com/gh/mattbrictson/tomo-plugin-sidekiq)
 [![Code Climate](https://codeclimate.com/github/mattbrictson/tomo-plugin-sidekiq/badges/gpa.svg)](https://codeclimate.com/github/mattbrictson/tomo-plugin-sidekiq)
 
-This is a [tomo](https://github.com/mattbrictson/tomo) plugin that provides tasks for managing [sidekiq](https://github.com/mperham/sidekiq) via [systemd](https://en.wikipedia.org/wiki/Systemd), based on the recommendations in the sidekiq documentation. This plugin assumes that you are also using `rbenv` and `env`, and that you are using a systemd-based Linux distribution like Ubuntu 18 LTS.
+This is a [tomo](https://github.com/mattbrictson/tomo) plugin that provides tasks for managing [sidekiq](https://github.com/mperham/sidekiq) via [systemd](https://en.wikipedia.org/wiki/Systemd), based on the recommendations in the sidekiq documentation. This plugin assumes that you are also using the tomo `rbenv` and `env` plugins, and that you are using a systemd-based Linux distribution like Ubuntu 18 LTS.
 
 ---
 
@@ -67,11 +67,79 @@ $ loginctl enable-linger <DEPLOY_USER>
 
 ## Tasks
 
-TODO: document plugin tasks
+### sidekiq:setup_systemd
 
-### sidekiq:task_name
+Configures systemd to manage sidekiq. This means that sidekiq will automatically be restarted if it crashes, or if the host is rebooted. This task essentially does two things:
 
-TODO
+1. Installs a `sidekiq.service` systemd unit
+1. Enables it using `systemctl --user enable`
+
+Note that these units will be installed and run for the deploy user. You can use `:sidekiq_systemd_service_template_path` to provide your own template and customize how sidekiq and systemd are configured.
+
+`sidekiq:setup_systemd` is intended for use as a [setup](https://tomo-deploy.com/commands/setup/) task. It must be run before sidekiq can be started during a deploy.
+
+### sidekiq:restart
+
+Gracefully restarts the sidekiq service via systemd, or starts it if it isn't running already. Equivalent to:
+
+```
+systemctl --user restart sidekiq.service
+```
+
+### sidekiq:start
+
+Starts the sidekiq service via systemd, if it isn't running already. Equivalent to:
+
+```
+systemctl --user start sidekiq.service
+```
+
+### sidekiq:stop
+
+Stops the sidekiq service via systemd. Equivalent to:
+
+```
+systemctl --user stop sidekiq.service
+```
+
+### sidekiq:status
+
+Prints the status of the sidekiq systemd service. Equivalent to:
+
+```
+systemctl --user status sidekiq.service
+```
+
+### sidekiq:log
+
+Uses `journalctl` (part of systemd) to view the log output of the sidekiq service. This task is intended for use as a [run](https://tomo-deploy.com/commands/run/) task and accepts command-line arguments. The arguments are passed through to the `journalctl` command. For example:
+
+```
+$ tomo run -- sidekiq:log -f
+```
+
+Will run this remote script:
+
+```
+journalctl -q --user-unit=sidekiq.service -f
+```
+
+## Recommendations
+
+### Sidekiq configuration
+
+Add a `config/sidekiq.yml` file to your application (i.e. checked into git) and use that to configure sidekiq, using environment variables as necessary. For example:
+
+```yaml
+---
+:queues:
+  - default
+  - mailers
+
+:concurrency: <%= ENV.fetch("SIDEKIQ_CONCURRENCY", "1") %>
+```
+
+Now you can tune sidekiq for each environment by simply setting environment variables (e.g. using `tomo run env:set`), without hard-coding configuration in git or within systemd files.
 
 ## Support
 
