@@ -33,7 +33,7 @@ Metrics/LineLength:
 Metrics/ParameterLists:
   Max: 6
 
-Layout/AlignHash:
+Layout/HashAlignment:
   EnforcedColonStyle:
     - table
     - key
