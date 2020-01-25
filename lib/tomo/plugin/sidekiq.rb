@@ -1,6 +1,6 @@
 require "tomo"
-require "tomo/plugin/sidekiq/tasks"
-require "tomo/plugin/sidekiq/version"
+require_relative "sidekiq/tasks"
+require_relative "sidekiq/version"
 
 module Tomo
   module Plugin
