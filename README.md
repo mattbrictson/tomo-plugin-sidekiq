@@ -135,6 +135,8 @@ Add a `config/sidekiq.yml` file to your application (i.e. checked into git) and 
 :queues:
   - default
   - mailers
+  - active_storage_analysis
+  - active_storage_purge
 
 :concurrency: <%= ENV.fetch("SIDEKIQ_CONCURRENCY", "1") %>
 ```
