@@ -1,4 +1,6 @@
-require: rubocop-performance
+require:
+  - rubocop-minitest
+  - rubocop-performance
 
 AllCops:
   DisplayCopNames: true
@@ -30,7 +32,7 @@ Lint/StructNewOverride:
   Enabled: true
 
 Metrics/AbcSize:
-  Max: 16
+  Max: 20
   Exclude:
     - "test/**/*"
 
@@ -44,6 +46,7 @@ Metrics/ClassLength:
     - "test/**/*"
 
 Metrics/MethodLength:
+  Max: 18
   Exclude:
     - "test/**/*"
 
@@ -88,6 +91,9 @@ Style/HashTransformKeys:
 
 Style/HashTransformValues:
   Enabled: true
+
+Style/NumericPredicate:
+  Enabled: false
 
 Style/StringLiterals:
   EnforcedStyle: double_quotes
