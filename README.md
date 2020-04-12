@@ -12,6 +12,7 @@ This is a [tomo](https://github.com/mattbrictson/tomo) plugin that provides task
 - [Installation](#installation)
 - [Settings](#settings)
 - [Tasks](#tasks)
+- [Recommendations](#recommendations)
 - [Support](#support)
 - [License](#license)
 - [Code of conduct](#code-of-conduct)
