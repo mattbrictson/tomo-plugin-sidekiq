@@ -2,7 +2,6 @@ module Tomo::Plugin::Sidekiq
   class Tasks < Tomo::TaskLibrary
     SystemdUnit = Struct.new(:name, :template, :path)
 
-    # rubocop:disable Metrics/AbcSize
     def setup_systemd
       linger_must_be_enabled!
 
@@ -12,7 +11,6 @@ module Tomo::Plugin::Sidekiq
       remote.run "systemctl --user daemon-reload"
       remote.run "systemctl", "--user", "enable", service.name
     end
-    # rubocop:enable Metrics/AbcSize
 
     %i[reload restart start stop status].each do |action|
       define_method(action) do
