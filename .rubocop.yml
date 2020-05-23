@@ -20,8 +20,6 @@ Layout/HashAlignment:
 
 Layout/LineLength:
   Max: 120
-  Exclude:
-    - "*.gemspec"
 
 Layout/SpaceAroundEqualsInParameterDefault:
   EnforcedStyle: no_space
