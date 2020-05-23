@@ -19,9 +19,7 @@ module Tomo::Plugin::Sidekiq
     end
 
     def log
-      remote.attach "journalctl", "-q",
-                    raw("--user-unit=#{service.name.shellescape}"),
-                    *settings[:run_args]
+      remote.attach "journalctl", "-q", raw("--user-unit=#{service.name.shellescape}"), *settings[:run_args]
     end
 
     private
@@ -35,9 +33,7 @@ module Tomo::Plugin::Sidekiq
     end
 
     def linger_must_be_enabled!
-      linger_users = remote.list_files(
-        "/var/lib/systemd/linger", raise_on_error: false
-      )
+      linger_users = remote.list_files("/var/lib/systemd/linger", raise_on_error: false)
       return if dry_run? || linger_users.include?(remote.host.user)
 
       die <<~ERROR.strip

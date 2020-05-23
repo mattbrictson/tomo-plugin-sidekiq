@@ -19,6 +19,7 @@ Layout/HashAlignment:
     - key
 
 Layout/LineLength:
+  Max: 120
   Exclude:
     - "*.gemspec"
 
