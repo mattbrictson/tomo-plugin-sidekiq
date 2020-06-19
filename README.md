@@ -2,7 +2,7 @@
 
 [![Gem Version](https://badge.fury.io/rb/tomo-plugin-sidekiq.svg)](https://rubygems.org/gems/tomo-plugin-sidekiq)
 [![Travis](https://img.shields.io/travis/mattbrictson/tomo-plugin-sidekiq.svg?label=travis)](https://travis-ci.org/mattbrictson/tomo-plugin-sidekiq)
-[![Circle](https://circleci.com/gh/mattbrictson/tomo-plugin-sidekiq.svg?style=shield)](https://app.circleci.com/pipelines/github/mattbrictson/tomo-plugin-sidekiq?branch=master)
+[![Circle](https://circleci.com/gh/mattbrictson/tomo-plugin-sidekiq/tree/main.svg?style=shield)](https://app.circleci.com/pipelines/github/mattbrictson/tomo-plugin-sidekiq?branch=main)
 [![Code Climate](https://codeclimate.com/github/mattbrictson/tomo-plugin-sidekiq/badges/gpa.svg)](https://codeclimate.com/github/mattbrictson/tomo-plugin-sidekiq)
 
 This is a [tomo](https://github.com/mattbrictson/tomo) plugin that provides tasks for managing [sidekiq](https://github.com/mperham/sidekiq) via [systemd](https://en.wikipedia.org/wiki/Systemd), based on the recommendations in the sidekiq documentation. This plugin assumes that you are also using the tomo `rbenv` and `env` plugins, and that you are using a systemd-based Linux distribution like Ubuntu 18 LTS.
@@ -64,7 +64,7 @@ $ loginctl enable-linger <DEPLOY_USER>
 | --------------------- | ------- |
 | `sidekiq_systemd_service` | Name of the systemd unit that will be used to manage sidekiq <br>**Default:** `"sidekiq_%{application}.service"`   |
 | `sidekiq_systemd_service_path` | Location where the systemd unit will be installed <br>**Default:** `".config/systemd/user/%{sidekiq_systemd_service}"`   |
-| `sidekiq_systemd_service_template_path` | Local path to the ERB template that will be used to create the systemd unit <br>**Default:** [service.erb](https://github.com/mattbrictson/tomo-plugin-sidekiq/blob/master/lib/tomo/plugin/sidekiq/service.erb)   |
+| `sidekiq_systemd_service_template_path` | Local path to the ERB template that will be used to create the systemd unit <br>**Default:** [service.erb](https://github.com/mattbrictson/tomo-plugin-sidekiq/blob/main/lib/tomo/plugin/sidekiq/service.erb)   |
 
 ## Tasks
 
