@@ -10,6 +10,9 @@ AllCops:
     - "tmp/**/*"
     - "vendor/**/*"
 
+Layout/EmptyLinesAroundAttributeAccessor:
+  Enabled: true
+
 Layout/HashAlignment:
   EnforcedColonStyle:
     - table
@@ -25,6 +28,12 @@ Layout/SpaceAroundEqualsInParameterDefault:
   EnforcedStyle: no_space
 
 Layout/SpaceAroundMethodCallOperator:
+  Enabled: true
+
+Lint/DeprecatedOpenSSLConstant:
+  Enabled: true
+
+Lint/MixedRegexpCaptureTypes:
   Enabled: true
 
 Lint/RaiseException:
@@ -99,6 +108,18 @@ Style/HashTransformValues:
 
 Style/NumericPredicate:
   Enabled: false
+
+Style/RedundantFetchBlock:
+  Enabled: true
+
+Style/RedundantRegexpCharacterClass:
+  Enabled: true
+
+Style/RedundantRegexpEscape:
+  Enabled: true
+
+Style/SlicingWithRange:
+  Enabled: true
 
 Style/StringLiterals:
   EnforcedStyle: double_quotes
