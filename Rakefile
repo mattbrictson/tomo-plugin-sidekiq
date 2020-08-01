@@ -31,7 +31,7 @@ namespace :bump do
     lowest_minor = RubyVersions.lowest_supported_minor
     latest = RubyVersions.latest
 
-    replace_in_file "tomo-plugin-sidekiq.gemspec", /ruby_version = ">= (.*)"/ => lowest
+    replace_in_file "tomo-plugin-sidekiq.gemspec", /ruby_version = .*">= (.*)"/ => lowest
     replace_in_file ".rubocop.yml", /TargetRubyVersion: (.*)/ => lowest_minor
     replace_in_file ".circleci/config.yml", %r{circleci/ruby:([\d.]+)} => latest
     replace_in_file ".circleci/config.yml", /bundle-.*ruby([\d.]+)-/ => latest
@@ -54,6 +54,8 @@ def replace_in_file(path, replacements)
   contents = IO.read(path)
   orig_contents = contents.dup
   replacements.each do |regexp, text|
+    raise "Can't find #{regexp} in #{path}" unless regexp.match?(contents)
+
     contents.gsub!(regexp) do |match|
       match[regexp, 1] = text
       match
