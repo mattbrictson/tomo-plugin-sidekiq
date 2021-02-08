@@ -1,7 +1,6 @@
 # tomo-plugin-sidekiq
 
 [![Gem Version](https://badge.fury.io/rb/tomo-plugin-sidekiq.svg)](https://rubygems.org/gems/tomo-plugin-sidekiq)
-[![Travis](https://img.shields.io/travis/mattbrictson/tomo-plugin-sidekiq.svg?label=travis)](https://travis-ci.org/mattbrictson/tomo-plugin-sidekiq)
 [![Circle](https://circleci.com/gh/mattbrictson/tomo-plugin-sidekiq/tree/main.svg?style=shield)](https://app.circleci.com/pipelines/github/mattbrictson/tomo-plugin-sidekiq?branch=main)
 [![Code Climate](https://codeclimate.com/github/mattbrictson/tomo-plugin-sidekiq/badges/gpa.svg)](https://codeclimate.com/github/mattbrictson/tomo-plugin-sidekiq)
 
