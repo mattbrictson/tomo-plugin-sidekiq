@@ -4,5 +4,5 @@ module Tomo
 end
 
 module Tomo::Plugin::Sidekiq
-  VERSION = "1.0.4".freeze
+  VERSION = "1.1.0".freeze
 end
