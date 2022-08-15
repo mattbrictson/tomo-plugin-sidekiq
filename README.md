@@ -52,7 +52,7 @@ end
 
 ### enable-linger
 
-This plugin installs sidekiq as a user-level service using systemctl --user. This allows sidekiq to be installed, started, stopped, and restarted without a root user or sudo. However, when provisioning the host you must make sure to run the following command as root to allow the sidekiq process to continue running even after the tomo deploy user disconnects:
+This plugin installs sidekiq as a user-level service using `systemctl --user`. This allows sidekiq to be installed, started, stopped, and restarted without a root user or sudo. However, when provisioning the host you must make sure to run the following command as root to allow the sidekiq process to continue running even after the tomo deploy user disconnects:
 
 ```
 # run as root
@@ -136,9 +136,6 @@ Add a `config/sidekiq.yml` file to your application (i.e. checked into git) and 
 ---
 :queues:
   - default
-  - mailers
-  - active_storage_analysis
-  - active_storage_purge
 
 :concurrency: <%= ENV.fetch("SIDEKIQ_CONCURRENCY", "1") %>
 ```
