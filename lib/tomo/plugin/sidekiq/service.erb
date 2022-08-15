@@ -4,14 +4,14 @@ After=syslog.target network.target
 ConditionPathExists=<%= paths.current %>
 
 [Service]
-ExecReload=/usr/bin/kill -TSTP $MAINPID
 ExecStart=/bin/bash -lc 'exec bundle exec sidekiq'
-Restart=on-failure
+Restart=always
 RestartSec=1
 StandardError=syslog
 StandardOutput=syslog
 SyslogIdentifier=%n
-Type=simple
+Type=notify
+WatchdogSec=10
 WorkingDirectory=<%= paths.current %>
 
 # Greatly reduce Ruby memory fragmentation and heap usage
