@@ -53,6 +53,6 @@ class Tomo::Plugin::Sidekiq::TasksTest < Minitest::Test
     assert_raises(Tomo::Testing::MockedExecError) do
       @tester.run_task("sidekiq:log", "-f")
     end
-    assert_equal("journalctl -q --user-unit\=sidekiq_example.service -f", @tester.executed_script)
+    assert_equal("journalctl -q --user-unit=sidekiq_example.service -f", @tester.executed_script)
   end
 end
