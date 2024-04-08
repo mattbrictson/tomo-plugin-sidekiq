@@ -79,7 +79,7 @@ Configures systemd to manage sidekiq. This means that sidekiq will automatically
 
 Note that these units will be installed and run for the deploy user. You can use `:sidekiq_systemd_service_template_path` to provide your own template and customize how sidekiq and systemd are configured.
 
-`sidekiq:setup_systemd` is intended for use as a [setup](https://tomo-deploy.com/commands/setup/) task. It must be run before sidekiq can be started during a deploy.
+`sidekiq:setup_systemd` is intended for use as a [setup](https://tomo.mattbrictson.com/commands/setup/) task. It must be run before sidekiq can be started during a deploy.
 
 ### sidekiq:restart
 
@@ -115,7 +115,7 @@ systemctl --user status sidekiq.service
 
 ### sidekiq:log
 
-Uses `journalctl` (part of systemd) to view the log output of the sidekiq service. This task is intended for use as a [run](https://tomo-deploy.com/commands/run/) task and accepts command-line arguments. The arguments are passed through to the `journalctl` command. For example:
+Uses `journalctl` (part of systemd) to view the log output of the sidekiq service. This task is intended for use as a [run](https://tomo.mattbrictson.com/commands/run/) task and accepts command-line arguments. The arguments are passed through to the `journalctl` command. For example:
 
 ```
 $ tomo run -- sidekiq:log -f
