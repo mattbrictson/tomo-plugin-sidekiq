@@ -3,7 +3,6 @@
 [![Gem Version](https://img.shields.io/gem/v/tomo-plugin-sidekiq)](https://rubygems.org/gems/tomo-plugin-sidekiq)
 [![Gem Downloads](https://img.shields.io/gem/dt/tomo-plugin-sidekiq)](https://www.ruby-toolbox.com/projects/tomo-plugin-sidekiq)
 [![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/mattbrictson/tomo-plugin-sidekiq/ci.yml)](https://github.com/mattbrictson/tomo-plugin-sidekiq/actions/workflows/ci.yml)
-[![Code Climate maintainability](https://img.shields.io/codeclimate/maintainability/mattbrictson/tomo-plugin-sidekiq)](https://codeclimate.com/github/mattbrictson/tomo-plugin-sidekiq)
 
 This is a [tomo](https://github.com/mattbrictson/tomo) plugin that provides tasks for managing [sidekiq](https://github.com/mperham/sidekiq) via [systemd](https://en.wikipedia.org/wiki/Systemd), based on the recommendations in the sidekiq documentation. This plugin assumes that you are also using the tomo `rbenv` and `env` plugins, and that you are using a systemd-based Linux distribution like Ubuntu 18 LTS.
 
