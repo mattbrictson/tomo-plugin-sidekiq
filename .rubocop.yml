@@ -1,5 +1,4 @@
 plugins:
-  - rubocop-minitest
   - rubocop-packaging
   - rubocop-performance
   - rubocop-rake
@@ -9,6 +8,8 @@ AllCops:
   DisplayStyleGuide: true
   NewCops: enable
   TargetRubyVersion: 3.2
+  SuggestExtensions:
+    rubocop-minitest: false
   Exclude:
     - "tmp/**/*"
     - "vendor/**/*"
@@ -69,9 +70,6 @@ Metrics/MethodLength:
 
 Metrics/ParameterLists:
   Max: 6
-
-Minitest/EmptyLineBeforeAssertionMethods:
-  Enabled: false
 
 Naming/MemoizedInstanceVariableName:
   Enabled: false

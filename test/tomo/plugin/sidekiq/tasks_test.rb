@@ -1,6 +1,4 @@
-require "test_helper"
-
-class Tomo::Plugin::Sidekiq::TasksTest < Minitest::Test
+class Tomo::Plugin::Sidekiq::TasksTest < Tomo::Plugin::Sidekiq::Test
   def setup
     @tester = Tomo::Testing::MockPluginTester.new("sidekiq", settings: { application: "example" })
   end
